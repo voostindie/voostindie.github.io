@@ -1,0 +1,60 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Vincent's Blog</title><link>https://voostindie.github.io/posts/</link><description>Recent content in Posts on Vincent's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 25 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://voostindie.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>How I Manage This Blog</title><link>https://voostindie.github.io/2021/11/25/how-i-manage-this-blog/</link><pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate><guid>https://voostindie.github.io/2021/11/25/how-i-manage-this-blog/</guid><description>TL;DR Markdown files in a Git repository Static site generation with Hugo Automatic publication to GitHub Pages If these words make you go woozy, then this is not for you.
+Markdown files in a Git repository Over a decade ago I settled on Markdown for all my writing. Although it has some drawbacks, the benefits easily outweigh them. At least for me. I can edit my writing anywhere, with any text editor, also 30 years in the future.</description><content type="html"><![CDATA[<h2 id="tldr">TL;DR</h2>
+<ul>
+<li>Markdown files in a Git repository</li>
+<li>Static site generation with Hugo</li>
+<li>Automatic publication to GitHub Pages</li>
+</ul>
+<p>If these words make you go woozy, then this is not for you.</p>
+<h2 id="markdown-files-in-a-git-repository">Markdown files in a Git repository</h2>
+<p>Over a decade ago I settled on <a href="https://daringfireball.net/projects/markdown/">Markdown</a> for all my writing. Although it has some drawbacks, the benefits easily outweigh them. At least for me. I can edit my writing anywhere, with any text editor, also 30 years in the future. I can run scripts on them to modify them in batch or extract information from them for reports, and so on.</p>
+<p>To be honest I don&rsquo;t use &ldquo;plain&rdquo; Markdown. I use generally accepted extensions like YAML front matter, code fragments, tables and wiki links.</p>
+<p>So, if I&rsquo;m going to maintain a blog, there&rsquo;s no question about how I&rsquo;ll do that: in Markdown. To get versioning in place I stick my posts in a <a href="https://git-scm.com">Git</a> repository.</p>
+<p>As a backup, I push my local repository to <a href="https://github.com">GitHub</a>. Having the repository on GitHub means that I can do other nifty things with my content, like publishing it to a website on GitHub Pages. But before we get into that I have to explain how I turn my Markdown files into an actual website.</p>
+<h2 id="static-site-generation-with-hugo">Static site generation with Hugo</h2>
+<p>Since I prefer Markdown, and plain text files on disk, it will not come as a surprise that I prefer static site generators as well. The one I&rsquo;ve settled on is <a href="https://gohugo.io">Hugo</a>. It&rsquo;s simple to use, flexible, and as fast as the tagline promises. (And it&rsquo;s not written in JavaScript but in Go, which is a big plus in my book.)</p>
+<p>To turn my pieces of text into posts for this blog, all I have to do is move them in the <code>content/posts</code> directory of a fresh Hugo site, and sprinkle some YAML Front Matter at the top. I then run <code>hugo</code> and presto: out comes a static website.</p>
+<p>To spice up the look &amp; feel of this blog I went the extra mile by forking the <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello Friend NG</a> theme and customizing it a bit with different fonts.</p>
+<h2 id="automatic-publication-to-github-pages">Automatic publication to GitHub Pages</h2>
+<p>When I&rsquo;m happy with a post, I commit it to the local Git repository and then push it to the one on GitHub. A few seconds after that it automatically shows up on this site, at <a href="https://voostindie.github.io">https://voostindie.github.io</a>. &ldquo;How does that work?&rdquo;, you might be wondering. Answer: through the magic of <a href="https://docs.github.com/en/actions">GitHub Actions</a> and <a href="https://docs.github.com/en/pages">GitHub Pages</a>.</p>
+<p>In my Git repository I have the following file at <code>.github/workflows/github-pages.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">GitHub Pages</span>
+<span style="color:#f92672">on</span>:
+  <span style="color:#f92672">push</span>:
+    <span style="color:#f92672">branches</span>:
+      - <span style="color:#ae81ff">main</span>
+<span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">deploy</span>:
+    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-20.04</span>
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
+          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+          <span style="color:#f92672">extended</span>: <span style="color:#66d9ef">true</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
+        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">voostindie/voostindie.github.io</span>
+          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.ACTION_ACCESS_TOKEN }}</span>
+          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main	</span>
+</code></pre></div><p>What this does, on every push to the repository on GitHub, is trigger a fresh build of the static site with Hugo, followed by a push of that build to my public repository <a href="https://github.com/voostindie/voostindie.github.io">voostindie.github.io</a> at GitHub. That&rsquo;s it! GitHub Pages takes care of serving this site on the URL you&rsquo;re looking at now.</p>
+<p>What makes this great is that:</p>
+<ul>
+<li>Once set up, it all happens automatically. I don&rsquo;t have to think about it anymore. Just <code>git push</code> and I&rsquo;m done.</li>
+<li>It&rsquo;s all managed. I don&rsquo;t need to set up a server, apply regular security patches to the underlying OS, replace SSL certificates, configure load balancers and all that stuff.</li>
+<li>It&rsquo;s all free!</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://schnerring.net/posts/create-a-hugo-website-with-github-pages-github-actions-and-cloudflare/">Cover image courtesy of Michael Schnerring</a>.</li>
+<li><a href="https://github.com/peaceiris/actions-hugo">GitHub Actions Workflow for Hugo</a>.</li>
+</ul>
+]]></content></item></channel></rss>
