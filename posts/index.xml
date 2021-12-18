@@ -1,4 +1,47 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Vincent's Blog</title><link>https://voostindie.github.io/posts/</link><description>Recent content in Posts on Vincent's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 25 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://voostindie.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>How I Manage This Blog</title><link>https://voostindie.github.io/2021/11/25/how-i-manage-this-blog/</link><pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate><guid>https://voostindie.github.io/2021/11/25/how-i-manage-this-blog/</guid><description>TL;DR Markdown files in a Git repository Static site generation with Hugo Automatic publication to GitHub Pages If these words make you woozy, then this is not for you.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Vincent's Blog</title><link>https://voostindie.github.io/posts/</link><description>Recent content in Posts on Vincent's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 18 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://voostindie.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>"Doing Knowledge Work" part 1: Introduction to the Series</title><link>https://voostindie.github.io/2021/12/18/knowledge-work-01/</link><pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate><guid>https://voostindie.github.io/2021/12/18/knowledge-work-01/</guid><description>Introduction I set up a blog because I enjoy tinkering with one. But now that I have one, what do I put on it? What is it that I&amp;rsquo;m not only willing to share with the world, but that at least some people might find interesting and useful?
+For a long while I thought about this. Then it dawned on me. It&amp;rsquo;s obvious: what I&amp;rsquo;m going to write about is personal productivity.</description><content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>I set up a blog because I enjoy tinkering with one. But now that I have one, what do I put on it? What is it that I&rsquo;m not only willing to share with the world, but that at least <em>some</em> people <em>might</em> find interesting and useful?</p>
+<p>For a long while I thought about this. Then it dawned on me. It&rsquo;s obvious: what I&rsquo;m going to write about is personal productivity. Because I&rsquo;m an absolute nut when it comes to that!</p>
+<p>On the off chance that I get to tell a colleague about <em>how</em> I work, two things strike me:</p>
+<ol>
+<li>I get high on energy talking about it. I&rsquo;m <em>really</em> passionate about this!</li>
+<li>They look at me funny, eventually. This is not <em>that</em> important, now is it?</li>
+</ol>
+<p>My observation is that few people try to get better at <em>how</em> they work. Everybody uses the tools they got handed a long time ago, learned the basics, and that&rsquo;s it. To be clear: I&rsquo;m not talking about <em>what</em> people are achieving. Most people I know are actively trying to get better at that. But do they reflect on <em>how</em> they reached their goals with the tools they use day in day out, and how do they could have done that more efficiently? Almost never, I find.</p>
+<p>A tool is just a means to an end: getting work done. But what I believe to be true as well is that computers were invented to <em>help</em> people, <em>not</em> get in their way. Being able to use your tools well means you&rsquo;ll have <em>more</em> time to spend on things that <em>really</em> matter to you. Sow and reap and all that.</p>
+<p>I have spent many, many hours over many, many years trying to become more productive, while having fun doing what I do. I&rsquo;d like to share that with you.</p>
+<h2 id="about-me-and-the-type-of-work-i-do">About me and the type of work I do</h2>
+<p>I work as a business architect. What that means is that I&rsquo;m juggling fifty-odd projects at a time, have at least twice as many stakeholders to satisfy, steer a team of about twenty architects who in turn facilitate about sixty DevOps teams with six to nine members each, and  generally try to get everybody moving in the direction that my team and I set and continuously adjust.</p>
+<p>My days are filled with meeting(s), listening, talking, coaching, presenting, reading, writing, drawing and thinking. What we call &ldquo;Knowledge work&rdquo;. My agenda is packed. I switch contexts all day long.</p>
+<p>When you ask my colleagues about me, they will tell you (I hope) that I&rsquo;m trustworthy, decisive, knowledgable, on top of of my game. And relaxed. I&rsquo;m busy, but not stressed.</p>
+<p>I&rsquo;m relaxed (most of the time) because my brain is not filled with things I have to remember. I&rsquo;ve learned to externalize what I need to do and remember. By planning my weeks and days and because I know what I can handle, I deliver on time and I don&rsquo;t overcommit.</p>
+<p>But I&rsquo;m not a robot. Sometimes I pick up too much. Sometimes a surprise pops up that I don&rsquo;t know how to handle. Sometimes I&rsquo;m not in the mood to do anything at all. But every time, eventually, I get back on track by doing the things I taught myself to do.</p>
+<h2 id="could-this-be-useful-to-you">Could this be useful to you?</h2>
+<p>If you&rsquo;re happy with the way you work today and feel no need to try to improve that, then this is not for you. (But then why are you here?)</p>
+<p>If the tools I use don&rsquo;t fit your workflow at all, then this is probably not for you either. You won&rsquo;t know which tools I use until part 4 of this series, but, sneak peek: I use a Mac. People describe me as an Apple fanboy. I disagree. All I use are a Mac and an iPhone, and the latter in a limited capacity. But here it comes: I take pleasure in working on my Mac and I have a strong dislike for almost everything Microsoft delivers. Which I know is unfair, because I haven&rsquo;t touched a Windows-machine in 15 years, but the Microsoft software I am forced to use for work daily - Teams, Outlook, PowerPoint - make me glad each time I use them that I don&rsquo;t have to. If that makes me an Apple fanboy in your view, then so be it.</p>
+<p>If you haven&rsquo;t put in effort to speed up your daily work at all, then don&rsquo;t start here. My advice to you is to first learn keyboard shortcuts, text snippets and at least some automation (e.g. with Shortcuts). If you find yourself doing a lot of repetitive pointing and clicking with your mouse and you <em>don&rsquo;t</em> sometimes wonder how you could do this better, then I don&rsquo;t think you&rsquo;re the right audience for this series.</p>
+<p>Are you reading this? Congratulations! This is for you!</p>
+<h2 id="outline-of-this-series">Outline of this series</h2>
+<p>I mind mapped a rough outline of this series and I&rsquo;m now thinking on 13 (oh oh!) parts. Here they are:</p>
+<ol>
+<li>Introduction. You&rsquo;re reading it right now.</li>
+<li>Breaking down knowledge work</li>
+<li>Guiding principles</li>
+<li>Tools</li>
+<li>Managing projects (and tasks)</li>
+<li>Planning</li>
+<li>Keeping notes</li>
+<li>Handling e-mail (and other distractions)</li>
+<li>Creating documents</li>
+<li>Storing reference data</li>
+<li>Managing contact information</li>
+<li>Archiving</li>
+<li>Automation</li>
+</ol>
+<p>This undoubtedly will change while I&rsquo;m at it. I&rsquo;ll update it as I go.</p>
+<p>In each part of this series I plan to write only about what works for me. Not about what does <em>not</em> work for me. I&rsquo;ve tried many things over the years and I have a long list of failures. You&rsquo;ll have to trust me on that. Maybe one day I&rsquo;ll write an article or two about those. This series is about what <em>does</em> work.</p>
+<p>With all this out of the way, let&rsquo;s get started!</p>
+]]></content></item><item><title>How I Manage This Blog</title><link>https://voostindie.github.io/2021/11/25/how-i-manage-this-blog/</link><pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate><guid>https://voostindie.github.io/2021/11/25/how-i-manage-this-blog/</guid><description>TL;DR Markdown files in a Git repository Static site generation with Hugo Automatic publication to GitHub Pages If these words make you woozy, then this is not for you.
 Markdown files in a Git repository Over a decade ago I settled on Markdown for all my writing. Although it has some drawbacks, the benefits easily outweigh them. At least for me. I can view my writing with any text editor, also 30 years from now.</description><content type="html"><![CDATA[<h2 id="tldr">TL;DR</h2>
 <ul>
 <li>Markdown files in a Git repository</li>
