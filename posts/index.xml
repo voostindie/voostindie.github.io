@@ -60,34 +60,34 @@ Markdown files in a Git repository Over a decade ago I settled on Markdown for a
 <h2 id="automatic-publication-to-github-pages">Automatic publication to GitHub Pages</h2>
 <p>When I&rsquo;m happy with a post, I commit it to the local Git repository and then push it to the one on GitHub. A few seconds after that it automatically shows up on this site, at <a href="https://voostindie.github.io">https://voostindie.github.io</a>. &ldquo;How does that work?&rdquo;, you might be wondering. Answer: through the magic of <a href="https://docs.github.com/en/actions">GitHub Actions</a> and <a href="https://docs.github.com/en/pages">GitHub Pages</a>.</p>
 <p>In my Git repository I have the following file at <code>.github/workflows/github-pages.yml</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">GitHub Pages</span>
-<span style="color:#f92672">on</span>:
-  <span style="color:#f92672">push</span>:
-    <span style="color:#f92672">branches</span>:
-      - <span style="color:#ae81ff">main</span>
-<span style="color:#f92672">jobs</span>:
-  <span style="color:#f92672">deploy</span>:
-    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-20.04</span>
-    <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
-        <span style="color:#f92672">with</span>:
-          <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
-          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
-        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
-        <span style="color:#f92672">with</span>:
-          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
-          <span style="color:#f92672">extended</span>: <span style="color:#66d9ef">true</span>
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
-        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify</span>
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
-        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
-        <span style="color:#f92672">with</span>:
-          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">voostindie/voostindie.github.io</span>
-          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.ACTION_ACCESS_TOKEN }}</span>
-          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
-          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main	</span>
-</code></pre></div><p>What this does, on every push to the repository on GitHub, is trigger a fresh build of the static site with Hugo, followed by a push of that build to my public repository <a href="https://github.com/voostindie/voostindie.github.io">voostindie.github.io</a> at GitHub. That&rsquo;s it! GitHub Pages takes care of serving this site on the URL you&rsquo;re looking at now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">GitHub Pages</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-20.04</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">extended</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">voostindie/voostindie.github.io</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.ACTION_ACCESS_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main	</span>
+</span></span></code></pre></div><p>What this does, on every push to the repository on GitHub, is trigger a fresh build of the static site with Hugo, followed by a push of that build to my public repository <a href="https://github.com/voostindie/voostindie.github.io">voostindie.github.io</a> at GitHub. That&rsquo;s it! GitHub Pages takes care of serving this site on the URL you&rsquo;re looking at now.</p>
 <p>What makes this great is that:</p>
 <ul>
 <li>Once set up, it all happens automatically. I don&rsquo;t have to think about it anymore. Just <code>git push</code> and I&rsquo;m done.</li>
@@ -99,12 +99,12 @@ Markdown files in a Git repository Over a decade ago I settled on Markdown for a
 <li><a href="https://schnerring.net/posts/create-a-hugo-website-with-github-pages-github-actions-and-cloudflare/">Cover image courtesy of Michael Schnerring</a>.</li>
 <li><a href="https://github.com/peaceiris/actions-hugo">GitHub Actions Workflow for Hugo</a>.</li>
 </ul>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p><code>grep</code>, <code>awk</code>, <code>sed</code>&hellip; These proven tools are about my age, still work great today, and will continue to do so for years to come.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 ]]></content></item></channel></rss>
